@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email and Phone Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9;
+        }
+
+        .box {
+            width: 350px;
+            margin: 70px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        h1 {
+            color: #2e7d32;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 9px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1>Email & Phone</h1>
+
+        <form onsubmit="return validateDetails()">
+            <label for="email">Email ID:</label>
+            <input type="text" id="email" placeholder="name@example.com" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" placeholder="10-digit number" required>
+
+            <button type="submit">Validate</button>
+            <button type="reset">Reset</button>
+        </form>
+
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function validateDetails() {
+            let email = document.getElementById("email").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let message = document.getElementById("message");
+
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let phonePattern = /^[0-9]{10}$/;
+
+            if (!emailPattern.test(email)) {
+                message.style.color = "red";
+                message.textContent = "Please enter a valid email address.";
+                return false;
+            }
+
+            if (!phonePattern.test(phone)) {
+                message.style.color = "red";
+                message.textContent =
+                    "Phone number must contain exactly 10 digits.";
+                return false;
+            }
+
+            message.style.color = "green";
+            message.textContent = "Email and phone number are valid!";
+            return false;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+
+    <style>
+        body {
+            background-color: #e0f7fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-box {
+            width: 350px;
+            margin: 80px auto;
+            padding: 25px;
+            background: white;
+            border: 1px solid #aaa;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00796b;
+        }
+
+        input {
+            width: 95%;
+            padding: 10px;
+            margin: 8px 0 15px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            width: 48%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-box">
+        <h1>Login</h1>
+
+        <form onsubmit="return loginUser()">
+            <label for="userid">Login ID:</label>
+            <input type="text" id="userid" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </form>
+    </div>
+
+    <script>
+        function loginUser() {
+            alert("Login form submitted successfully!");
+            return false;
+        }
+    </script>
+</body>
+</html>

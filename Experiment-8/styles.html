@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Styles and Backgrounds</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe4e1;
+
+            /* Background image effect without an external image file */
+            background-image:
+                linear-gradient(135deg, #ffe4e1, #e0ffff);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            text-align: center;
+            color: blue;
+        }
+
+        .left {
+            text-align: left;
+            color: blue;
+            font-family: Cambria, serif;
+            font-size: large;
+            text-indent: 20px;
+        }
+
+        .center {
+            text-align: center;
+            text-decoration: underline;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            word-spacing: 10px;
+            font-size: larger;
+        }
+
+        .right {
+            text-align: right;
+            color: red;
+            font-family: Tahoma, sans-serif;
+            font-size: 18px;
+            text-decoration: overline;
+            font-style: italic;
+        }
+
+        #headline {
+            color: darkorange;
+            font-size: 24px;
+            text-decoration: underline;
+        }
+
+        .card {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-image: linear-gradient(90deg, #ffffff, #dbeafe);
+            border: 1px solid #aaa;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="color: blue; text-align: center;">
+        CSS Demonstration
+    </h1>
+
+    <div class="card">
+        <p>This paragraph has the default style.</p>
+
+        <p class="left">
+            This paragraph is styled using the left class.
+        </p>
+
+        <p class="center">
+            This paragraph is styled using the center class.
+        </p>
+
+        <p class="right">
+            This paragraph is styled using the right class.
+        </p>
+
+        <b>This is normal bold text.</b>
+        <br><br>
+
+        <b id="headline">This bold text uses an ID selector.</b>
+    </div>
+</body>
+</html>

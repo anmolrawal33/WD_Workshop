@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0fff0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #006400;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #777;
+            text-align: center;
+        }
+
+        th {
+            background-color: #90ee90;
+        }
+
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Your Shopping Cart</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="cartItems"></tbody>
+    </table>
+
+    <h2 id="total">Total: ₹0</h2>
+
+    <button onclick="clearCart()">Clear Cart</button>
+
+    <script>
+        function displayCart() {
+            let cart = JSON.parse(localStorage.getItem("bookCart")) || [];
+            let tbody = document.getElementById("cartItems");
+            let total = 0;
+
+            tbody.innerHTML = "";
+
+            if (cart.length === 0) {
+                tbody.innerHTML =
+                    "<tr><td colspan='3'>Your cart is empty.</td></tr>";
+            }
+
+            cart.forEach(function(book, index) {
+                total += book.price;
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${book.name}</td>
+                        <td>₹${book.price}</td>
+                        <td>
+                            <button onclick="removeBook(${index})">
+                                Remove
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            document.getElementById("total").textContent =
+                "Total: ₹" + total;
+        }
+
+        function removeBook(index) {
+            let cart = JSON.parse(localStorage.getItem("bookCart")) || [];
+            cart.splice(index, 1);
+            localStorage.setItem("bookCart", JSON.stringify(cart));
+            displayCart();
+        }
+
+        function clearCart() {
+            localStorage.removeItem("bookCart");
+            displayCart();
+        }
+
+        displayCart();
+    </script>
+</body>
+</html>

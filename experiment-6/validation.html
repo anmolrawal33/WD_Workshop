@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Name and Password Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff3e0;
+        }
+
+        .box {
+            width: 350px;
+            margin: 70px auto;
+            padding: 25px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e65100;
+        }
+
+        input {
+            width: 100%;
+            padding: 9px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 15px;
+        }
+
+        #message {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1>Form Validation</h1>
+
+        <form onsubmit="return validateForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+
+            <button type="submit">Validate</button>
+            <button type="reset">Reset</button>
+        </form>
+
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function validateForm() {
+            let name = document.getElementById("name").value.trim();
+            let password = document.getElementById("password").value;
+            let message = document.getElementById("message");
+
+            let namePattern = /^[A-Za-z ]+$/;
+
+            if (name.length < 6 || !namePattern.test(name)) {
+                message.style.color = "red";
+                message.textContent =
+                    "Name must contain alphabets and at least 6 characters.";
+                return false;
+            }
+
+            if (password.length < 6) {
+                message.style.color = "red";
+                message.textContent =
+                    "Password must be at least 6 characters long.";
+                return false;
+            }
+
+            message.style.color = "green";
+            message.textContent = "Name and password are valid!";
+            return false;
+        }
+    </script>
+</body>
+</html>
